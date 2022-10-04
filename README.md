@@ -16,4 +16,4 @@ This is a dummy package.
 Holds `README.md` aditional informations, such as images and videos.
 Here's an image of octocat:
 
-![Octo Cat](assets/octocat_image.png.jpg)
+![Octo Cat](assets/octocat_image.png)
