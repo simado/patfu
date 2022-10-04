@@ -1,0 +1,9 @@
+# build stuff
+dist
+patfu.egg-info
+
+# python stuff
+venv
+
+# Mac files
+.DS_Store
