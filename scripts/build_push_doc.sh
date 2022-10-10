@@ -2,17 +2,11 @@
 
 set -e
 
-# this is a hack, but we have to make sure we're only ever running this from
-# the top level of the package and not in the subdirectory...
-if [[ ! -f patfu/__init__.py ]]; then
-    echo "This must be run from the patfu project directory"
-    exit 3
-fi
-
 # get the running branch
 branch=$(git symbolic-ref --short HEAD)
 
 # cd into docs, make them
+mkdir doc
 cd doc
 make clean html EXAMPLES_PATTERN=ex_*
 cd ..
@@ -72,7 +66,7 @@ if [[ "$CIRCLE_BRANCH" =~ ^master$|^[0-9]+\.[0-9]+\.X$ ]]; then
 
     # We have to re-add the origin with the GH_TOKEN credentials
     git remote rm origin
-    git remote add origin https://"$GH_NAME":"$GH_TOKEN"@github.com/"$GH_NAME"/gh_automation.git
+    git remote add origin "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
     # NOW we should be able to push it
     git push origin gh-pages

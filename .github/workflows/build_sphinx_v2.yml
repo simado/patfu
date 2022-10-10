@@ -1,0 +1,31 @@
+name: build-sphinx-v2
+
+# Declaring environment variables to be used later
+env:
+  GITHUB_ACTOR: simado
+  GITHUB_REPOSITORY: simado/patfu
+  GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  build_sphinx_job:
+    runs-on: ubuntu-latest
+    container: debian:buster-slim
+
+    steps:
+      - name: Get prerequisites and clone repository
+        run: |
+          set -x
+          apt-get update
+          apt-get install -y git
+          apt-get -yq install libatlas-dev libatlas-base-dev liblapack-dev gfortran ccache
+        shell: bash
+
+      - name: Run build script for Sphinx pages
+        run: |
+          chmod +x ./scripts/build_push_doc.sh
+          ./scripts/build_push_doc.sh
+        shell: bash
