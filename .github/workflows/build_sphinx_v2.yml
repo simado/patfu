@@ -21,7 +21,6 @@ jobs:
           set -x
           apt-get update
           apt-get install -y git
-          apt-get -yq install libatlas-dev libatlas-base-dev liblapack-dev gfortran ccache
         shell: bash
 
       - name: Run build script for Sphinx pages
