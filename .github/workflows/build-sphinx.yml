@@ -28,5 +28,7 @@ jobs:
         shell: bash
 
       - name: Run build script for Sphinx pages
-        run: "scripts/buildsite.sh"
+        run: |
+          chmod +x ./scripts/buildsite.sh
+          ./scripts/buildsite.sh
         shell: bash
