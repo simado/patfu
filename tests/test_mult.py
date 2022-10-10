@@ -6,13 +6,13 @@ if __name__ == '__main__' and __package__ is None:
     PARENT_DIR = path.dirname(path.dirname(path.abspath(__file__)))
     sys.path.append(PARENT_DIR)
 
-from sum.main import func
+from patfu.mult.main import func as func
 
 def test_func():
     '''test multiplication'''
-    assert func(2,5) == 7
+    assert func(2,5) == 10
     assert func(2,2) == 4
-    assert func(2,0) == 2
+    assert func(2,0) == 0
 
 
 if __name__ == '__main__':
