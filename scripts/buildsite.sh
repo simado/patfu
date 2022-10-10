@@ -29,7 +29,7 @@ rsync -av "build/html/" "${docroot}/"
 pushd "${docroot}"
 
 git init
-git remote add deploy "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git remote add deploy "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 git checkout -b gh-pages
  
 # Adds .nojekyll file to the root to signal to GitHub that  
